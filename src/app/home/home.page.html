@@ -6,21 +6,27 @@
 
 <ion-content class="ion-padding" color="dark">
   <ion-item>
-    <ion-label position="floating"> Ingresar Contraseña</ion-label>
+    <ion-label position="floating">Ingresar Contraseña</ion-label>
     <ion-input
-      type="password"
+      [type]="showPassword ? 'text' : 'password'"
       [(ngModel)]="password"
       required
     ></ion-input>
+    <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()">
+      <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+    </ion-button>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Confirmar Contraseña</ion-label>
     <ion-input
-      type="password"
+      [type]="showConfirmPassword ? 'text' : 'password'"
       [(ngModel)]="confirmPassword"
       required
     ></ion-input>
+    <ion-button fill="clear" slot="end" (click)="toggleConfirmPasswordVisibility()">
+      <ion-icon [name]="showConfirmPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+    </ion-button>
   </ion-item>
 
   <ion-button expand="block" color="success" (click)="validatePasswords()">
@@ -31,4 +37,3 @@
     {{ message }}
   </div>
 </ion-content>
-
