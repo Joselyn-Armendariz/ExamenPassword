@@ -1,20 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Examen Validación de Contraseñas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" color="dark">
+  <ion-item>
+    <ion-label position="floating"> Ingresar Contraseña</ion-label>
+    <ion-input
+      type="password"
+      [(ngModel)]="password"
+      required
+    ></ion-input>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-item>
+    <ion-label position="floating">Confirmar Contraseña</ion-label>
+    <ion-input
+      type="password"
+      [(ngModel)]="confirmPassword"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="success" (click)="validatePasswords()">
+    Validar Contraseña
+  </ion-button>
+
+  <div *ngIf="message" [style.color]="isMatch ? 'green' : 'red'">
+    {{ message }}
   </div>
 </ion-content>
+
